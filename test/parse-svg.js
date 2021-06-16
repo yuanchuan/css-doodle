@@ -127,3 +127,33 @@ test('group property', t => {
     ]
   });
 });
+
+
+test('semicolon seperated values', t => {
+  compare(t, 'values: 60; 100; 110', {
+    name: 'svg',
+    type: 'block',
+    value: [
+      { type: 'statement', name: 'values', value: '60; 100; 110' }
+    ]
+  }, true);
+});
+
+
+test('colon seperated properties', t => {
+  compare(t, 'xlink:href: url(#app)', {
+    name: 'svg',
+    type: 'block',
+    value: [
+      { type: 'statement', name: 'xlink:href', value: 'url(#app)' }
+    ]
+  });
+
+  compare(t, 'xlink:title: hello:world', {
+    name: 'svg',
+    type: 'block',
+    value: [
+      { type: 'statement', name: 'xlink:title', value: 'hello:world' }
+    ]
+  });
+});
